@@ -1,7 +1,7 @@
 var dataset = null;
 var w = 640,
-    h = 280,
-    p = [20, 50, 30, 20],
+    h = 380,
+    p = [120, 50, 30, 40],
     x = d3.scale.ordinal().rangeRoundBands([0, w - p[1] - p[3]], 0.1),
     y = d3.scale.linear().range([0, h - p[0] - p[2]]),
     z = d3.scale.ordinal().range(["lightpink", "darkgray", "lightblue"]),
@@ -76,5 +76,59 @@ d3.xml("/201594_data_source.xml", function(xml) {
         .attr("height", function(d) { return y(d.y); })
         .attr("width", x.rangeBand());
 
+    // Add a label per date.
+    var label = svg.selectAll("text")
+        .data(x.domain())
+        .enter().append("svg:text")
+        .attr("x", function(d) { return x(d) + x.rangeBand() / 2; })
+        .attr("y", 6)
+        .attr("text-anchor", "middle")
+        .attr("dy", ".71em")
+        .text(function(d) {return group_names[d];});
 
+    // Add y-axis rules.
+    var rule = svg.selectAll("g.rule")
+        .data(y.ticks(5))
+        .enter().append("svg:g")
+        .attr("class", "rule")
+        .attr("transform", function(d) { return "translate(0" + "," + -y(d) + ")"; });
+
+    rule.append("svg:line")
+        .attr("x2", w - p[1] - p[3])
+        .style("stroke", function(d) { return d ? "#fff" : "#000"; })
+        .style("stroke-opacity", function(d) { return d ? 0 : null; });
+
+    rule.append("svg:text")
+        .attr("x", w - p[1] - p[3] + 6)
+        .attr("dy", ".35em")
+        .text(d3.format(",d"));
+
+
+
+    attribute_names_for_legend = attribute_names.splice(1,attribute_names.length)
+    legend_scale = d3.scale.linear().domain([0,attribute_names_for_legend.length]).range([0, w - p[1] - p[3]])
+    var legend = svg.append("g");
+    legend.selectAll("rect")
+          .data(attribute_names_for_legend)
+          .enter()
+          .append("svg:rect")
+        .attr("x",function(d,i) {return legend_scale(i)})
+        .attr("y",10)
+        .attr("width",20)
+        .attr("height", 20)
+        .text(function(d) {return "Amma";})
+        .style("fill",function(d,i){console.log(colors(i)); return colors(i);})
+        .attr("transform", "translate(0,-"+(h - p[0] - p[2]+120)+")");
+
+    legend.selectAll("text")
+        .data(attribute_names_for_legend)
+        .enter()
+        .append("svg:text")
+        .attr("x",function(d,i) {return legend_scale(i) + 25})
+        .attr("y",25)
+        .attr("width",20)
+        .attr("height", 20)
+        .text(function(d,i) {return attribute_names_for_legend[i];})
+        .style("fill","black")
+        .attr("transform", "translate(0,-"+(h - p[0] - p[2]+120)+")");
 });
