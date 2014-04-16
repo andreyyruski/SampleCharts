@@ -1,0 +1,6 @@
+ARROW_POSITION_Y,ARROW_POSITION_X,ID,ICHART_ID,X,Y,WIDTH,HEIGHT,TEXT,BACKGROUND_COLOR,ARROW_POSITION,META_DATA,BORDER_COLOR,BORDER_WIDTH,IS_BORDER_VISIBLE,IS_TRANSPARENT_BACKGROUND,IS_SHADOW_VISIBLE,COMMENT_TYPE,CHART_X,CHART_Y,IS_COMMENT_DELETED,COMMENT_TEXT,ISDELETED,ASSIGNED_LINK_BY_USER,comment_index
+"15","-10","2240658","201594","0","0","130","34","","16777215","33","not set","1","0","0","1","0","Vertical Axis Title",\N,\N,"1",\N,"0","","0"
+"15","-10","2240659","201594","8","16","487","48","<TEXTFORMAT LEADING=\"2\"><P ALIGN=\"LEFT\"><FONT FACE=\"Arial\" SIZE=\"24\" COLOR=\"#000000\" LETTERSPACING=\"0\" KERNING=\"1\"><B>Revenue by Product Line</B></FONT></P></TEXTFORMAT>","16777215","0","not set","1","0","0","1","0","Chart Name",\N,\N,"0",\N,"0","","4"
+"15","-10","2240660","201594","0","0","160","45","","16777215","-1","not set","1","0","0","1","0","Last Update Information",\N,\N,"1",\N,"0","","0"
+"15","-10","2240661","201594","0","0","160","30","","16777215","22","not set","1","0","0","1","0","Source Comment",\N,\N,"1",\N,"0","","0"
+"15","-10","2240662","201594","0","0","130","30","","16777215","11","not set","1","0","0","1","0","Horizontal Axis Title",\N,\N,"1",\N,"0","","0"
