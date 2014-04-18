@@ -14,10 +14,40 @@
             font: 10px sans-serif;
             shape-rendering: crispEdges;
         }
+        div#static {
+            width: 640px;
+            margin-bottom: 10px;;
+        }
+        .left_part {
+            float: left;
+        }
+        .right_part {
+            float: right;
+        }
+        .clr {
+            clear: both;
+        }
+        #chart_title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #chart_logo img{
+            width: 125px;
+        }
 
     </style>
 </head>
 <body>
+<div id="static">
+    <div class="left_part" id="chart_title">
+        Revenue By Product Line
+    </div>
+    <div class="right_part" id="chart_logo">
+        <img src="/images/dell_computer.png"/>
+    </div>
+    <div class="clr">
+    </div>
+</div>
 <script type="text/javascript" src="/javascripts/stacked_bar.js"></script>
 </body>
 </html>
