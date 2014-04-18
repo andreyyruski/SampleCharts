@@ -81,7 +81,9 @@ function load_data_and_draw_graph() {
             .attr("x", function(d) { return x(d.x); })
             .attr("y", function(d) { return -y(d.y0) - y(d.y); })
             .attr("height", function(d) { return y(d.y); })
-            .attr("width", x.rangeBand());
+            .attr("width", x.rangeBand())
+            .append("title")
+            .text(function(d){return  "Sample Tool tip";});
 
         // Add a label per date.
         var label = svg.selectAll("text")
