@@ -15,6 +15,11 @@ var bar_colors = [];
 var attribute_names_for_legend = [];
 var legend_actual_names = {};
 
+String.prototype.repeat = function( num )
+{
+    return new Array( num + 1 ).join( this );
+}
+
 function init_svg() {
     svg = d3.select("body").append("svg:svg")
         .attr("width", w)
@@ -100,7 +105,7 @@ function load_data_and_draw_graph() {
             .data(y.ticks(10))
             .enter().append("svg:g")
             .attr("class", "rule")
-            .attr("transform", function(d) { return "translate(0" + "," + -y(d) + ")"; });
+            .attr("transform", function(d) { return "translate(-585" + "," + -y(d) + ")"; });
 
         rule.append("svg:line")
             .attr("x2", w - p[1] - p[3])
@@ -148,7 +153,9 @@ function load_style_data() {
         var xml = $(xml_data);
         var series_strings = ["firstSeries", "secondSeries", "thirdSeries", "fourthSeries", "fifthSeries", "sixthSeries"]
         for(var index = 0; index < series_strings.length; index++) {
-            bar_colors.push(parseInt(xml.find("style[d='."+series_strings[index]+"'][n='fill']").attr("v")).toString(16));
+            var bar_color = parseInt(xml.find("style[d='."+series_strings[index]+"'][n='fill']").attr("v")).toString(16);
+            bar_color = "0".repeat(6-bar_color.length) + bar_color
+            bar_colors.push("#"+bar_color);
         }
         load_series_data();
     });
