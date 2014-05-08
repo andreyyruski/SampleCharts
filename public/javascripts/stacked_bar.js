@@ -1,5 +1,9 @@
 var dataset = null;
 var svg = null;
+var comments_csv = null;
+var comment_type_index = null;
+var comment_text_index = null;
+
 var w = 640,
     h = 380,
     p = [120, 50, 30, 40],
@@ -145,6 +149,8 @@ function load_data_and_draw_graph() {
             .text(function(d,i) {return legend_actual_names[attribute_names_for_legend[i]];})
             .style("fill","black")
             .attr("transform", "translate(0,-"+(h - p[0] - p[2]+120)+")");
+
+        load_comments_data();
     });
 }
 
@@ -169,6 +175,27 @@ function load_series_data() {
         load_data_and_draw_graph();
     });
 }
+
+function load_comments_data() {
+    $.ajax({
+        url: "/201594_comments.csv",
+        dataType: 'text',
+        cache: false
+    }).done(function(csvAsString){
+        comments_csv = csvAsString.csvToArray();
+        comments_csv[0].map(function(a,b){if(a=='COMMENT_TYPE'){comment_type_index = b;}});
+        comments_csv[0].map(function(a,b){if(a=='TEXT'){comment_text_index = b;}});
+        if(comment_type_index!=null && comment_text_index!=null) {
+            comments_csv.slice(1,-1).map(function(row,row_index){
+                if(row[comment_type_index]=='Chart Name') {
+                    $("#chart_title").html(row[comment_text_index].replace(/\\/g,"'"));
+                    return;
+                }
+            });
+        }
+    });
+}
+
 
 init_svg();
 load_style_data();
