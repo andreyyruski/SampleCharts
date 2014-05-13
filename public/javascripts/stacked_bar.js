@@ -58,7 +58,7 @@ function load_data_and_draw_graph() {
 
         // Populate the Group names
         for(var data_row_index=0; data_row_index< data_rows.length; data_row_index++) {
-            alert(data_rows[data_row_index].getAttribute(attribute_names[0]));
+            alert(attribute_names[0]);
             group_names.push(data_rows[data_row_index].getAttribute(attribute_names[0]));
         }
 
@@ -103,7 +103,7 @@ function load_data_and_draw_graph() {
             .attr("y", 6)
             .attr("text-anchor", "middle")
             .attr("dy", ".71em")
-            .text(function(d) {return group_names[d].split(" ")[1] ;});//group_names[d];});
+            .text(function(d) {return group_names[d];});
 
         // Add y-axis rules.
         var rule = svg.selectAll("g.rule")
