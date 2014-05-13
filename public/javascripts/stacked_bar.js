@@ -40,10 +40,11 @@ function load_data_and_draw_graph() {
         var first_row_attributes = data_rows[0].attributes;
         var groups_length = first_row_attributes.length - 1;
 
+        // Assume that the data columns start from C1 then C2, C3....
         // Collect the Data-Attribute Names (Collecting the attributes of the first row)
         for(var index=0; index < first_row_attributes.length; index++) {
-            alert(first_row_attributes[index].localName)
-            attribute_names.push(first_row_attributes[index].localName)
+            //alert(first_row_attributes[index].localName)
+            attribute_names.push("C"+index)
         }
 
         // Populate dataset from the XML
