@@ -43,7 +43,6 @@ function load_data_and_draw_graph() {
         // Assume that the data columns start from C1 then C2, C3....
         // Collect the Data-Attribute Names (Collecting the attributes of the first row)
         for(var index=0; index < first_row_attributes.length; index++) {
-            //alert(first_row_attributes[index].localName)
             attribute_names.push("C"+index)
         }
 
@@ -60,7 +59,6 @@ function load_data_and_draw_graph() {
 
         // Populate the Group names
         for(var data_row_index=0; data_row_index< data_rows.length; data_row_index++) {
-            alert(attribute_names[0]);
             group_names.push(data_rows[data_row_index].getAttribute(attribute_names[0]));
         }
 
