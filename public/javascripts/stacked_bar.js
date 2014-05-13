@@ -42,6 +42,7 @@ function load_data_and_draw_graph() {
 
         // Collect the Data-Attribute Names (Collecting the attributes of the first row)
         for(var index=0; index < first_row_attributes.length; index++) {
+            alert(first_row_attributes[index].localName)
             attribute_names.push(first_row_attributes[index].localName)
         }
 
