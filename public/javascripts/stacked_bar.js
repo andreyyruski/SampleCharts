@@ -102,7 +102,7 @@ function load_data_and_draw_graph() {
             .attr("y", 6)
             .attr("text-anchor", "middle")
             .attr("dy", ".71em")
-            .text(function(d) {console.log(d); return group_names[d].split(" ")[1] ;});//group_names[d];});
+            .text(function(d) {console.log(group_names[d]); return group_names[d].split(" ")[1] ;});//group_names[d];});
 
         // Add y-axis rules.
         var rule = svg.selectAll("g.rule")
